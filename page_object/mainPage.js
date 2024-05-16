@@ -12,12 +12,42 @@ class MainPage extends Base {
     }
 
     get showSectionName(){
-        return cy.get('.section-part > .section-heading > .section-heading__title')
+        return cy.get('.section-part > .section-heading > .section-heading__title');
     }
+
+    get selectNavbarItem() {
+        return cy.get('.h-nav__item > .h-nav__link[href="/shops"]').click()
+    }
+
+    get selectAddressList(){
+        return cy.get('.shop-item-wrap')
+    }
+
+    get showAddressName(){
+        return cy.get('.section-heading__title')
+    }
+
+    get selectCategories(){
+        return cy.get('.filter-categories a')
+    }
+
+    get showCategoriesTitleText() {
+        return cy.get('.section-heading__title.ec-section-name')
+    }
+
 
     enterSuggestItem(itemText) {
         this.openCatalogMenu.click();
         this.selectSuggestItem.contains(`${itemText}`).click()
+    }
+
+    magazineSelector(address) {
+        this.selectNavbarItem
+        this.selectAddressList.contains(`${address}`).click()
+    }
+
+    addItem(categories){
+        this.selectCategories.contains(`${categories}`).click()
     }
 
 }
