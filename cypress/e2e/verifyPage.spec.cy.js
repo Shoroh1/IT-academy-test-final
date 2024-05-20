@@ -17,7 +17,7 @@ describe('Checking the login page for your personal account', () => {
     expect(loginFrame.elements.errorText().should('contain', 'Пользователь не найден.'));
   })
 
-  it.only('should register a new user', () => {
+  it('should register a new user', () => {
     cy.visit('https://5element.by/')
     mainPage.loginPageButton.click()
     loginFrame.openRegisterForm();
