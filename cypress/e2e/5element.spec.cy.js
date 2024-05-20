@@ -3,7 +3,7 @@ const searchField = require('../../page_object/components/search')
 const banner = require('../../page_object/components/banner')
 
 
-describe('5element test', () => {
+describe('5element home page tests', () => {
     beforeEach(() => {
         cy.clearAllCookies();
     });

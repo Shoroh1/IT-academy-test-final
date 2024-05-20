@@ -15,7 +15,7 @@ describe('catalog tests', () => {
         expect(mainPage.showSectionName.should('contain', CATALOG.HOME_TECH));
     });
 
-    it('adding a product to comparison ', () => {
+    it.only('adding a product to comparison ', () => {
         cy.visit('https://5element.by/catalog/377-smartfony')
         smartphones.selectManyPhones()
         expect(smartphones.elements.getItemInCarousel().should('have.length', 2))

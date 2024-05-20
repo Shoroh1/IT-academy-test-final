@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-describe('', () => {
+describe('GET/search', () => {
     let response
     beforeAll(async () => {
         let config = {
@@ -26,7 +26,7 @@ describe('', () => {
         response = await axios.request(config)
     })
 
-    test('name test', async() =>{
+    test('get status 200', async() =>{
         expect(response.status).toBe(200);
     })
     test('response === request', async() =>{

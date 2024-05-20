@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-describe('', () => {
+describe('API/locations', () => {
     let response
     beforeAll(async () => {
         let config = {
@@ -32,7 +32,7 @@ describe('', () => {
         expect(response.data.length).toBeGreaterThan(1)
     })
 
-    test('locatison', async()=>{
+    test('locatison id', async()=>{
         expect(response.data[0].ID).toEqual('279')
     })
 
