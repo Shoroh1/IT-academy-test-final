@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-describe('GET/ products/smartphones', () => {
+describe('POST/ products/smartphones', () => {
     let result
     beforeAll(async () => {
         let data = '{"productId":"794802","categoryId":"24851"}';

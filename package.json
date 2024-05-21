@@ -7,7 +7,8 @@
     "cy:open": "cypress open",
     "test": "jest",
     "merge-mochawesome": "cypress run --reporter mochawesome && npx mochawesome-merge cypress/results/*.json -o ./mochawesome-report/cypress/results/mochawesome-result.json && npx marge .\\mochawesome-report\\cypress\\results\\mochawesome-result.json",
-    "open-report": "start .\\mochawesome-report\\mochawesome-result.html"
+    "open-report": "start .\\mochawesome-report\\mochawesome-result.html",
+    "api-report": "start .\\reports\\test-report.html"
   },
   "keywords": [],
   "author": "",

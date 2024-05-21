@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-describe('API/locations', () => {
+describe('GET/ locations', () => {
     let response
     beforeAll(async () => {
         let config = {
