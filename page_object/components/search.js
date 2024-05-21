@@ -2,8 +2,8 @@ const Base = require('../base')
 
 class Search extends Base {
 
-    get searchField(){
-        return cy.get('.h-search > :nth-child(2) > input[placeholder="Поиск товара"]');
+    get displaySearchField() {
+        return cy.get('.h-search > :nth-child(2) > .inp').invoke("attr", 'style', 'display:block')
     }
 
     get findBtn() {
@@ -14,10 +14,10 @@ class Search extends Base {
         return cy.get('.section-error')
     }
 
-    inputTextInSearchField(text){
-        this.searchField.click({force:true})
-        this.searchField.type(text, {force:true})
-        this.findBtn.click()
+    inputTextInSearchField(text) {
+       this.displaySearchField.click()
+        this.displaySearchField.type(text, {force:true})
+        this.findBtn.click({force: true})
     }
 }
 

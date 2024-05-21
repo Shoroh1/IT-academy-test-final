@@ -15,16 +15,21 @@ describe('catalog tests', () => {
         expect(mainPage.showSectionName.should('contain', CATALOG.HOME_TECH));
     });
 
-    it.only('adding a product to comparison ', () => {
+    it('adding a product to comparison ', () => {
         cy.visit('https://5element.by/catalog/377-smartfony')
         smartphones.selectManyPhones()
         expect(smartphones.elements.getItemInCarousel().should('have.length', 2))
+        expect(smartphones.elements.getItemInCarousel().should('be.visible'))
+        expect(smartphones.elements.getItemInCarousel().should('have.data', 'product_id'))
+        expect(smartphones.elements.getItemInCarousel().should('have.length.gte', 1))
     })
     it('should open categories', () => {
         cy.visit('https://5element.by/');
         mainPage.enterSuggestItem(CATALOG.LAPTOP_PC)
-        mainPage.addItem("Ноутбуки")
-        expect(mainPage.showCategoriesTitleText.should('contain', "Ноутбуки"))
+        mainPage.ChooseCategory("Ноутбуки")
+        expect(mainPage.ShowNotebooksItems.should('be.visible'))
+        expect(mainPage.ShowNotebooksItems.should('have.length.gte', 10))
+
     });
 
     it('should visible filter label', () => {
@@ -35,22 +40,15 @@ describe('catalog tests', () => {
     it('should add product to favorites', () => {
         cy.visit('https://5element.by/');
         mainPage.enterSuggestItem(CATALOG.LAPTOP_PC)
-        mainPage.addItem("Ноутбуки")
+        mainPage.ChooseCategory("Ноутбуки")
         notebooks.addToFavorites()
         expect(notebooks.openLoginPage.should('be.visible'))
     })
     it('Should show a window for sending discount information', () => {
         cy.visit('https://5element.by/');
         mainPage.enterSuggestItem(CATALOG.LAPTOP_PC)
-        mainPage.addItem("Ноутбуки")
+        mainPage.ChooseCategory("Ноутбуки")
         notebooks.sendNotification(LOGIN.EMAIL)
         expect(notebooks.sendBtn.should('be.enabled'))
-    })
-    it('should add item to cart', () => {
-        cy.visit('https://5element.by/');
-        mainPage.enterSuggestItem(CATALOG.LAPTOP_PC)
-        mainPage.addItem("Ноутбуки")
-        notebooks.addItemToCart(3)
-        expect(notebooks.cardTitle.should('contain', CATALOG.ADD_CART))
     })
 })

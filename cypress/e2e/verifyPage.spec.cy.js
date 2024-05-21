@@ -11,21 +11,24 @@ describe('Checking the login page for your personal account', () => {
   it('verify login unsuccessful for user not founding', () => {
     cy.visit('https://5element.by/')
     mainPage.loginPageButton.click()
-    loginFrame.enterEmail(LOGIN.EMAIL)
-    loginFrame.enterPassword(LOGIN.PASSWORD)
-    loginFrame.clickLoginBtn();
+    cy.login(LOGIN.EMAIL, LOGIN.PASSWORD)
     expect(loginFrame.elements.errorText().should('contain', 'Пользователь не найден.'));
   })
 
-  it('should register a new user', () => {
+  it('should register a new user(register btn disabled)', () => {
     cy.visit('https://5element.by/')
     mainPage.loginPageButton.click()
-    loginFrame.openRegisterForm();
-    loginFrame.enterFirstName(LOGIN.FIRST_NAME);
-    loginFrame.enterLastName(LOGIN.LAST_NAME);
+    loginFrame.elements.registerBtn();
+    cy.register(LOGIN.FIRST_NAME, LOGIN.LAST_NAME);
     expect(loginFrame.elements.getCodeBtn().should('be.disabled'))
+  });
+
+  it('should register a new user(register btn enabled)', () => {
+    cy.visit('https://5element.by/')
+    mainPage.loginPageButton.click()
+    loginFrame.elements.registerBtn();
+    cy.register(LOGIN.FIRST_NAME, LOGIN.LAST_NAME);
     loginFrame.enterPhoneNumber(LOGIN.PHONE_NUMBER)
     expect(loginFrame.elements.getCodeBtn().should('be.enabled'))
-
   });
 })

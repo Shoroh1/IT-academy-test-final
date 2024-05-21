@@ -23,6 +23,10 @@ class MainPage extends Base {
         return cy.get('.shop-item-wrap')
     }
 
+    get allShopsCity() {
+        return cy.get('.shop-list > ul').find('li')
+    }
+
     get showAddressName(){
         return cy.get('.section-heading__title')
     }
@@ -31,8 +35,8 @@ class MainPage extends Base {
         return cy.get('.filter-categories a')
     }
 
-    get showCategoriesTitleText() {
-        return cy.get('.section-heading__title.ec-section-name')
+    get ShowNotebooksItems() {
+        return cy.get('.catalog-default > .catalog').find('.card-product-full')
     }
 
 
@@ -46,9 +50,10 @@ class MainPage extends Base {
         this.selectAddressList.contains(`${address}`).click()
     }
 
-    addItem(categories){
+    ChooseCategory(categories){
         this.selectCategories.contains(`${categories}`).click()
     }
+
 
 }
 
